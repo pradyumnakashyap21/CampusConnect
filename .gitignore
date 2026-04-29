@@ -1,0 +1,39 @@
+# Ignore these files and directories
+.DS_Store
+Thumbs.db
+*.swp
+*.swo
+*~
+.vscode
+.idea
+*.log
+*.tmp
+
+# IDE files
+.project
+.classpath
+.settings/
+
+# Dependency directories
+node_modules/
+vendor/
+
+# Uploads (optional - comment out if you want to track uploads)
+# uploads/
+
+# Environment files
+.env
+.env.local
+
+# Cache files
+*.cache
+cache/
+temp/
+
+# OS files
+*.exe
+*.jar
+
+# Backup files
+*.bak
+*.backup

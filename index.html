@@ -1,0 +1,199 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>College Event Posters</title>
+    <link rel="stylesheet" href="css/global.css">
+    <link rel="stylesheet" href="css/navbar.css">
+    <link rel="stylesheet" href="css/hero.css">
+    <link rel="stylesheet" href="css/search.css">
+    <link rel="stylesheet" href="css/events.css">
+    <link rel="stylesheet" href="css/modals.css">
+    <link rel="stylesheet" href="css/footer.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+</head>
+<body>
+    <!-- Header -->
+    <header class="header">
+        <div class="container">
+            <h1 class="logo">🎓 EventHub</h1>
+            <p class="tagline">Discover college events and connect with your community</p>
+        </div>
+    </header>
+
+    <!-- Main Container -->
+    <div class="container main-content">
+        <!-- Top Bar with Upload Button and View Toggle -->
+        <div class="top-bar">
+            <button class="upload-btn" id="uploadBtn">
+                <span>📤</span> Upload Event Poster
+            </button>
+            
+            <div class="view-toggle">
+                <button class="toggle-btn active" id="gridViewBtn" data-view="grid">
+                    <span>⊞</span> Grid View
+                </button>
+                <button class="toggle-btn" id="listViewBtn" data-view="list">
+                    <span>☰</span> List View
+                </button>
+            </div>
+        </div>
+
+        <!-- Filters Section -->
+        <div class="filters-section">
+            <h3>Filter Events</h3>
+            <div class="filters-grid">
+                <!-- Category Filter -->
+                <div class="filter-group">
+                    <label for="categoryFilter">📂 Category</label>
+                    <select id="categoryFilter" class="filter-select">
+                        <option value="">All Categories</option>
+                        <option value="technical">Technical</option>
+                        <option value="cultural">Cultural</option>
+                        <option value="sports">Sports</option>
+                        <option value="social">Social</option>
+                        <option value="workshop">Workshop</option>
+                    </select>
+                </div>
+
+                <!-- Club Filter -->
+                <div class="filter-group">
+                    <label for="clubFilter">🏢 Club</label>
+                    <select id="clubFilter" class="filter-select">
+                        <option value="">All Clubs</option>
+                        <option value="coding">Coding Club</option>
+                        <option value="design">Design Club</option>
+                        <option value="arts">Arts Society</option>
+                        <option value="sports">Sports Association</option>
+                    </select>
+                </div>
+
+                <!-- Date Filter -->
+                <div class="filter-group">
+                    <label for="dateFilter">📅 Date Range</label>
+                    <select id="dateFilter" class="filter-select">
+                        <option value="">All Dates</option>
+                        <option value="upcoming">Upcoming</option>
+                        <option value="thisweek">This Week</option>
+                        <option value="thismonth">This Month</option>
+                    </select>
+                </div>
+
+                <!-- Reset Button -->
+                <button class="reset-filters-btn" id="resetBtn">✕ Reset Filters</button>
+            </div>
+        </div>
+
+        <!-- Events Container -->
+        <div class="events-container grid-view" id="eventsContainer">
+            <!-- Sample Event Cards will be populated here -->
+        </div>
+    </div>
+
+    <!-- Upload Modal (Design Only) -->
+    <div class="modal" id="uploadModal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h2>Upload Event Poster</h2>
+                <button class="modal-close" id="closeUploadModal">&times;</button>
+            </div>
+            <div class="modal-body">
+                <form class="upload-form" id="uploadForm">
+                    <div class="form-group">
+                        <label for="eventTitle">Event Title</label>
+                        <input type="text" id="eventTitle" required placeholder="Enter event title...">
+                    </div>
+
+                    <div class="form-group">
+                        <label for="eventCategory">Category</label>
+                        <select id="eventCategory" required>
+                            <option value="">Select Category</option>
+                            <option value="technical">Technical</option>
+                            <option value="cultural">Cultural</option>
+                            <option value="sports">Sports</option>
+                            <option value="social">Social</option>
+                            <option value="workshop">Workshop</option>
+                        </select>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="eventClub">Club</label>
+                        <select id="eventClub" required>
+                            <option value="">Select Club</option>
+                            <option value="coding">Coding Club</option>
+                            <option value="design">Design Club</option>
+                            <option value="arts">Arts Society</option>
+                            <option value="sports">Sports Association</option>
+                        </select>
+                    </div>
+
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label for="eventDate">Date</label>
+                            <input type="date" id="eventDate" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="eventTime">Time</label>
+                            <input type="time" id="eventTime" required>
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="eventVenue">Venue</label>
+                        <input type="text" id="eventVenue" required placeholder="Enter venue...">
+                    </div>
+
+                    <div class="form-group">
+                        <label for="eventDescription">Description</label>
+                        <textarea id="eventDescription" rows="4" required placeholder="Enter event description..."></textarea>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="eventPoster" class="file-upload-label">Event Poster Image</label>
+                        <label for="eventPoster" class="file-upload">
+                            <input type="file" id="eventPoster" accept="image/*" required>
+                            <div class="file-upload-content">
+                                <i class="fas fa-cloud-upload-alt"></i>
+                                <p>Drag and drop your image here, or click to select</p>
+                                <small>Supported formats: JPG, PNG, GIF, WebP (Max 5MB)</small>
+                            </div>
+                        </label>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="registrationLink">Registration Link</label>
+                        <input type="url" id="registrationLink" required placeholder="https://...">
+                    </div>
+
+                    <button type="submit" class="submit-btn">Upload Event</button>
+                </form>
+            </div>
+        </div>
+    </div>
+
+    <!-- Registration Modal (Design Only) -->
+    <div class="modal" id="registerModal">
+        <div class="modal-content modal-small">
+            <div class="modal-header">
+                <h2>Register for Event</h2>
+                <button class="modal-close" id="closeRegisterModal">&times;</button>
+            </div>
+            <div class="modal-body">
+                <p class="info-text">⚠️ Registration will be available after backend setup</p>
+                <div class="register-info">
+                    <p><strong>Event:</strong> <span id="regEventName"></span></p>
+                    <p><strong>Date:</strong> <span id="regEventDate"></span></p>
+                    <p><strong>Time:</strong> <span id="regEventTime"></span></p>
+                    <p><strong>Venue:</strong> <span id="regEventVenue"></span></p>
+                </div>
+                <p style="margin-top: 20px; text-align: center; color: #666;">
+                    Registration links and backend processing coming soon!
+                </p>
+            </div>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>
